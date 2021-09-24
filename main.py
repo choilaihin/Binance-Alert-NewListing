@@ -2,7 +2,7 @@
 This script notifies the user via Telegram whenever there is a new cryptocurrency listing on Binance.
 
 Description:
-1. Scrap the website https://www.binance.com/en/support/announcement/c-48 every 5 seconds
+1. Scrap the website https://www.binance.com/en/support/announcement/c-48 every 1 minute
 2. If latest announcement contain "Will List", look for ()
 3. If () is present, send a Telegram message with the contents in ().
 '''
@@ -32,7 +32,7 @@ record_time = datetime.datetime.now()
 
 while True:
     now = datetime.datetime.now()
-    if now > record_time + datetime.timedelta(seconds=5):
+    if now > record_time + datetime.timedelta(minutes=1):
         record_time = datetime.datetime.now()
         announcement = getAnnouncement(requests.get(URL))
         if announcement == current_announcement:
