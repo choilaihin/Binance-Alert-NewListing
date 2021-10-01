@@ -37,7 +37,11 @@ pattern = 'Will List'
 
 while True:
     time.sleep(60)
-    announcement = getAnnouncement(requests.get(URL))
+    try:
+        announcement = getAnnouncement(requests.get(URL))
+    except Exception as e:
+        print(e)
+        continue
     if announcement == current_announcement:
         continue
     else:
